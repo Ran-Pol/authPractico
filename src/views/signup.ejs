@@ -9,11 +9,16 @@
 </head>
 
 <body>
-    <form action="/signup" method="post">
-        <input type="email" name="email" placeholder="Insert Email">
-        <input type="password" name="password" placeholder="Insert Password">
-        <button type="submit">Sign Up</button>
-    </form>
+    <% if (signupMessage) {%>
+        <div>
+            <%= signupMessage%>
+        </div>
+        <%}%>
+            <form action="/signup" method="post">
+                <input type="email" name="email" placeholder="Insert Email">
+                <input type="password" name="password" placeholder="Insert Password">
+                <button type="submit">Sign Up</button>
+            </form>
 </body>
 
 </html>
