@@ -31,6 +31,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use((req, res, next) => {
     app.locals.signupMessage = req.flash('signupMessage');
+    app.locals.signinMessage = req.flash('signinMessage');
+    // console.log('Signup message', !app.locals.signupMessage.length)
+    // console.log('Signin message', !app.locals.signinMessage.length)
+    // app.locals.house = "KLK En La Casa"
+    app.locals.user = req.user;
     next();
 })
 

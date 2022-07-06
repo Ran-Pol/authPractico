@@ -38,13 +38,12 @@ passport.use('localSignup', new localStrategy({
 }));
 
 // Signin Process
-passport.use('local-signin', new localStrategy({
+passport.use('localSignin', new localStrategy({
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
 }, async (req, email, password, done) => {
-    const user = await User.find({ userEmail: email });
-
+    const user = await User.findOne({ userEmail: email });
     if (!user) {
         return done(null, false, req.flash('signinMessage', `This account doesn't exits.`));
     }
@@ -53,4 +52,4 @@ passport.use('local-signin', new localStrategy({
         return done(null, false, req.flash('signinMessage', `Incorrect password.`));
     }
     done(null, user);
-}))
+}));
